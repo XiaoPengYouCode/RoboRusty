@@ -1,0 +1,14 @@
+nodes:
+  - id: auto_aim
+    build: cargo build -p auto_aim
+    path: target/debug/auto_aim
+    inputs:
+      race_tick: referee_system/race_tick
+
+  - id: referee_system
+    build: cargo build -p referee_system
+    path: target/debug/referee_system
+    inputs:
+      system_tick: dora/timer/secs/2
+    outputs:
+      - race_tick
